@@ -1,0 +1,69 @@
+Max 1 - Introduction, basic patching. Random note generator
+- Ice breaker thing
+- Watch a bunch of Youtube videos
+- Metro + random
+- Storing random to make music (repetition is Music)
+- Mouse and keyboard to control your patch (mousestate and key + keyup)
+- ASSIGNMENT: Sequence randomness to make a piece
+
+Max 2 - Looking at sounds — harmonic versus inharmonic sounds
+- Look at sound recordings (Why do things sound the way they do?)
+- Speech, violin, clarinet (maybe)
+- AM synthesis, FM synthesis
+- Applying an envelope to an oscillator to create a note
+- ASSIGNMENT: Short piece using only oscillators, envelopes and mouse+keyboard
+
+Max 3 - Sample playback, curves and automation
+- Playing back a sound with playlist~
+- Playing a looping sound with playlist~
+- Fading playlist~ samples in/out
+- ASSIGNMENT: Create a piece that you play by just pressing “go” and then walking away. Use line~ objects to fade samples in and out.
+
+Max 4 - 
+- Wavetable synthesis using recorded waveform cycles
+- ASSIGNMENT: Use the nodes object to crossfade between waveforms. Control it using the mouse
+- Controlling playback of a groove~ object and a play~ object using DSP objects
+- Playing forwards, backwards, windowing.
+- ASSIGNMENT: Create a piece based around an ostinato that comes from gating one of these effects.
+
+Max 5 - Distortion, frequency shifting, filtering, bitcrushing, waveshaping, organizing a sound processing patch. Send~ and receive~.
+- How to do distortion, frequency shifting, filtering, bitcrushing and waveshaping
+- How send~ and receive~ work
+
+Max 6 - Reverb + echo, tapin~ tapout~ and convolution. More sound patch organization
+- What does delay~ do, and how does it affect the sound spectrum?
+- What about tapin~ and tapout~? What do they do?
+- Why am I suddenly talking about convolution?
+- Now might be a good time to start talking about the FFT. Could also talk about the vocoder here.
+
+Max 7 - Working with MIDI. More patch organization
+
+Max 8 - Polyphony with poly~. MIDTERM part 1
+
+Max 9 - MIDTERM part 2
+
+Max 10 - Working with live audio. Karma~. Feedback and sound textures
+- Karma~
+- Feedback (different forms of distortion) and sound textures
+- Microphone input
+- Contact microphones?
+- ASSIGNMENT: Short piece using these techniques
+
+Max 11 - Fingerpinger + Wekinator
+- How to parse input like from fingerpinger. What makes a mapping good or bad? Wekinator?
+- Start/stop, continuous controls
+- LEAP motion?
+
+Max 12 Advanced sampling: Polybuffer~, 2d.wave, beat-relative looping.	
+- What even is beat-relative?
+- Delaying events until the beat
+- Calculating swing?
+
+Max 13 - Pattern generation and algorithmic composition
+
+Max 14 - FFT Treatments
+Max 15 - Laptop Orchestra
+
+Max 16 - Jitter part 1
+Max 17 - Jitter part 2
+Max 18 - Max for Live
