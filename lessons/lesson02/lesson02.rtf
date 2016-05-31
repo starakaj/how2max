@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1343\cocoasubrtf160
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh11880\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 First thing to talk about is Sound. As we all know, sound is vibrations in the air. When something in the world starts to vibrate, it pushes the air around it. That air pushes more air and this generates a sound wave. (1) It\'92s worth mentioning at this point that the ear is specially designed to detect vibrations in the air, but its purpose is to understand the state of things in the world. Vibration is a means to an end. This relationship between the physical phenomenon and the psychic phenomenon or percept, is something that we\'92ll encounter over and over again while working with Max. Because in Max we\'92ll often be working with very small, very elemental components, like individual samples for example. When we assemble these fundamental components into a musical construction, we\'92ll find that we have to keep in mind simultaneously these two domains. On the one hand, we\'92ll be concerned with questions of aesthetics and perception, asking ourselves how vibrations and samples impact us cognitively to build a musical impression. On the other hand, we\'92ll attend to the physical and mathematical dimension, focusing on how the atoms that we\'92re working with vibrate together. \
+\
+Let\'92s start by talking about the sine wave. The sine wave is in some sense an elemental part of sound. Heard alone, it produces the sensation of a tone. \
+\
+(A) Play a tone in Max\
+\
+<maxsteps>\
+First, make a obj:cycle~ object. The obj:cycle~ object is Max\'92s sine tone generator. Now, make an obj:ezdac~ object. DAC stands for digital analog converter, and it\'92s the way that sound gets out of Max. Make sure the sound is low, then turn the sound on. You\'92ll notice something right away, which is that there is no sound. Don\'92t turn up your volume yet. Notice in the bottom-right corner of the patcher (if you\'92re in Max 7) that the level meter is maxed. That\'92s because there is sound coming out, but it\'92s DC. Imagine a string-this is equivalent to pulling the string without plucking it. It\'92s displaced but not vibrating, which is what we can hear. Now, connect the obj:cycle~ to a obj:flonum (press f to make this object). Now connect the two and change the number inside the flonum object. As you drag the number up, you should start to hear a low pitch. You can also type the number in directly if you switch to maxconcept:(lock mode). \
+</maxsteps>\
+\
+This value being sent into the cycle~ object is the frequency in Hertz, or vibrations per second. \
+\
+<maxsteps>\
+The value is sent as the number changes, not when the box is connected. This can have some unexpected consequences. For example, if you delete the cycle~ object and then recreate it and connect it back up, it may seem like things aren\'92t working. That\'92s because the cycle~ object is still at its default frequency, which is zero. If you drag the number box then everything will work out. Now try making another cycle~ object. This time, give it an argument of 220. Connect this one without a number box. See what happens. The argument supplied the initial frequency.\
+</maxsteps>\
+\
+Why is the object called cycle~ if it actually names a sine tone? Great question. No idea. \
+\
+<maxsteps>\
+Now, suppose we want to attenuate the cycle~ output. There are a couple of ways to do this. One is with the obj:gain~ object. Gain~ is a signal object that attenuates or boosts a signal. Put it between the cycle~ object and the dac~ object and it can be used as a volume control. Another way to achieve the same thing is with a multiplication object. Max for multiplication is *. So obj:*~ is the signal multiplication object. You can use a flonum object to sent the multiplication amount, though maybe it\'92s a good idea to set a range (since multiplying by more that 1 is going to clip). You can use a slider object for this purpose. Slider by default has a range of 0 to 127, but we\'92d like our slider to move in the range of 0 to 1. So select the slider and open up the inspector. Select float input (meaning allow for decimal numbers) and set the range to be 1. Now move the slider around and you can use it to control volume. Ignore the zipper noise, for now.\
+</maxsteps>\
+\
+Now, what happens if we try to play two sine tones at the same time? Let\'92s put both at relatively low intensity and play them together.\
+\
+A) Same frequency - Nothing\
+B) Double frequency - Two tones. But what if we balance out the amplitudes? It\'92s actually kind of interesting to play with the place where the impression changes between two distinct tones and one pitch with a rich timbre. Oops we said timbre.\
+C) 1.5 the frequency. Again, similar relationship, but the higher tone needs to be much quieter to blend.\
+D) 1.84 the frequency. Much lower, down around 0.007. Which is interesting in itself.\
+E) Very close to the same frequency, maybe 1Hz off. Interesting, some beating going on\
+F) And now, as we drag the frequency apart, what happens?\
+\
+Once we get to around 20Hz apart, something really interesting starts to happen. We hear this warbling that dissolves into dissonance. Of course, we\'92re at that very exciting, very sexy time <-> frequency boundary. Basically, things with a frequency below 20 Hz or 20 events per second sound like just that\'97a stream of events. Things above that frequency sound like just that\'97a frequency or pitch. But in the middle we get this whole fun messy place that we can really sink our toes into with Max.\
+\
+<maxsteps>\
+Two objects that are useful here for seeing what we\'92re talking about. First is obj:scope~. Scope~ lets you look at your waveform, which is cool. Open up the inspector you\'92ll see these parameters Buffer Size, Calcount, Onset Delay and Trigger Mode. You can use these together to dial in the picture of your sound. Check out our warbling sound: it looks like a pure sine tone \'93fit\'94 inside another sine tone. That\'92s basically what we\'92re hearing: a single tone whose amplitude is changing very rapidly. Pay with the two frequencies and the amplitudes, check out the resulting waveform.\
+\
+Next object is obj:spectroscope~. This object lets you look at which frequencies are present in the sound. On the y-axis is amplitude and the x-axis is frequency. Look at our two peaks y\'92all. Check out the Sonogram mode of operation, which is useful for showing the evolution of the frequency content of the sound over time.\
+\
+With these two objects together we can start to get a clear picture of what\'92s going on with our sounds.\
+</maxsteps>\
+\
+Pure sine tones are elemental but also one dimensional. They can communicate only static vibration, only unchanging frequency. Sounds that we encounter in the real world also have shape or envelope. (3). Here are some of them. Aren\'92t they great. I don\'92t have to tell you that this envelope or low-frequency change in the overall loudness of a sound is extremely important to our impression of a sound.\
+\
+<maxsteps>\
+Another name for an envelope is a ramp, or a slow, continuous change. The linear ramp generator object in Max is called obj:line~. Line~ takes one argument which is its initial amplitude. It receives messages in its left inlet in two parts: destination plus time to destination. We can use a obj:message box to store these messages. [1 20] is interpreted by line~ as \'93ramp to the value 1 over the course of 20 milliseconds\'94.\
+\
+We can use the obj:scope~ object to see the output of line~ as well, since after all it\'92s just a signal. Since it\'92s a number, it\'92s also useful to use obj:number~ to monitor the output. A word of warning, number~ doesn\'92t pass values through, like its control-valued cousin, flonum.\
+\
+It\'92s also possible to connect line~ to a cycle~ object,  to set an envelope for the pitch as well.\
+</maxsteps>\
+\
+\{Tiny break, get up and stretch\}\
+\
+These units of composition are pretty minimal. Extremely minimal. But technically speaking, with enough oscillators and envelopes it\'92s possible to synthesize any sound. So we don\'92t actually need much more than this. Let\'92s start by controlling the amplitude and pitch of one oscillator using the mouse. We\'92ll control the pitch with the x-axis or left-right value of the mouse and the amplitude with the y-axis or up-down value. \
+\
+<maxsteps>\
+The object for receiving mouse input is called obj:mousestate. Send the mousestate object the \'93poll\'94 message to start automatically sampling x and y position. Second outlet goes from 0 to the width of your screen in pixels, and third outlet goes from 0 to the height of your screen in pixels. Hoo-fucking-ray.\
+\
+Now we\'92re going to talk about an extremely important object called obj:scale. Scale takes inputs in a certain range and maps them to another range. Scale takes five arguments but we\'92re only interested in the first four. Those are low input, high input, low output and high output. Here\'92s a picture of what we\'92re talking about (5). I made a picture because it\'92s super important. So we\'92re going to use these to scale the x coordinates and y coordinates to be useable. We take those two values that were in the range lowscreensize to highscreensize and scale them to be in the range 0 to 1\
+\
+Then we\'92re going to take these values that we scaled to be in the range 0 to 1 and scale them to be in other ranges. Just because. The most important one to scale is the frequency, because we can\'92t hear oscillations in the range of 0 to 1.\
+\
+As we\'92re moving this amplitude slider around, you may notice some annoying buzzing. This buzzing is called zipper noise and it happens when you change a continuous value (especially amplitude) discontinuously. You can hear it when we change the amplitude of our oscillator. We can fix it by adding a little bit of ramping between these mouse values as they change. Use a message box with the dollar sign to make an automatic ramp.\
+\
+We can use input from the keyboard as well as part of our instrument using key and keyup. Each object sends out a number when the key is pressed. That number is the ASCII number, which you can look up if you\'92re curious (8). I\'92m going to use the obj:select or sel object to select for a particular number. When [sel 49] gets a 49 in its leftmost inlet, it spits out a bang. Let\'92s use that bang to turn a line~ on and off.\
+</maxsteps>\
+\
+Now I\'92d like you to split into pairs and try to score a very short piece using just what we\'92ve built so far (9). This should take place in two parts. In the first part, you should extend this first patch to work with four oscillators (feel free to copy-paste what we\'92ve just made). The inputs to the instrument should be the trackpad (mouse position on screen) as well as the keys one through four on your keyboard. Here are some things that you might want to try/consider:\
+\
+A) What is the relationship between the four oscillators going to be? Will they have a fixed harmonic ratio?\
+B) What will each keypress control?\
+C) Should the frequency range for each oscillator be the same? You could scale outputs from mousestate differently for each object\
+\
+For the second part, prepare a score to go along with your piece. It don\'92t have to be pretty. Think about what you can control versus what you can\'92t. Think about what\'92s useful to the performer. Finally, perform.\
+\
+(1) (Find or make a sound pressure graphic)\
+(2) (Find good pure sine music) (Listening examples)\
+(3) Examples of real world sounds, like piano, voice, violin, tap noise, rain, etc. \
+(4) Check out the fingerpicker object\
+(5) A scale picture example\
+(6) A test object for to help people\
+(7) A magical pvar aggregator object for great happiness\
+(8) Nice ASCII thingy\
+(9) Examples of cool non-western scores}

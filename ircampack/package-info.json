@@ -1,0 +1,28 @@
+{
+	"author" : "Sam Tarakajian",
+	"authors" : [  ],
+	"description" : "<none>",
+	"displayname" : "",
+	"extends" : "",
+	"extensible" : 0,
+	"homepatcher" : "",
+	"max_version_max" : "none",
+	"max_version_min" : "7.1",
+	"name" : "CIEE 2016",
+	"os" : 	{
+		"macintosh" : 		{
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "none"
+		}
+,
+		"windows" : 		{
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "none"
+		}
+
+	}
+,
+	"tags" : [  ],
+	"version" : "1.0.0",
+	"website" : "http://www.girlfriends.site"
+}

@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww15760\viewh13080\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Alright, so last time we looked at a lot of different sounds, and we talked about what made sounds sound like sounds.\
+\
+So let\'92s imagine that we wanted to build our own sounds, starting with some fundamental pieces. We might start with a sine tone.\
+\
+1) Add a cycle~ to the patch\
+\
+Okay, so we\'92ve succeeded in making _a_ sound, though probably to justify the purchase of this laptop we\'92d hope to make something a little bit more interesting. So far we\'92ve seen that you can add one sine wave to another one to generate a new sine wave. But what happens when you multiply two sine tones together?\
+\
+First, you get tremolo. But then, as you gradually increase the tempo, you start to hear these two things spacing out. These are called sidebands, and this technique is called amplitude modulations. Actually, technically this technique is called ring modulation. The difference between the two techniques is that amplitude modulation scales amplitude, but never multiplies by a negative number. Another way of saying this is that it has a DC component.\
+\
+In general, whatever frequencies are present in the modulator, there will be two sidebands spaced equally far apart from the carrier.\
+\
+So, you might be tempted to try AM out with richer waveforms, like say a sawtooth. It\'92s neat, but there\'92s a much more interesting way to get more interesting sounds. Instead of multiplying two waveforms together, let\'92s try controlling one waveform with another.\
+\
+2) Add another cycle~ to the patch. Control the frequency of one using the other. Congratulations, you\'92ve built an FM synthesizer.\
+\
+In the simplest case, it\'92s really just one cycle~ connected to another. Play around with the frequency going into one a bit. What\'92s really interesting? Notice that things really get interesting when the frequency and the carrier are related by a whole number ratio. This is something that we can capture by multiplying the carrier frequency by a constant, which we\'92ll call the harmonic ratio.\
+\
+It might not be obvious, but getting an interesting value for the modulation depth actually requires us to multiply by the frequency of the modulator. Putting these two ideas together gives us a more playable version of the FM synthesizer.\
+\
+Well, this is cool and all, but we\'92re still just working with simple tones. If we look at real sounds (and we looked at a lot of them last time), you can see that they change over time. This is basically where we start talking about envelopes.\
+\
+3) Add an adsr~ to the patch.\
+\
+Nice, we\'92ve added an adsr to the patch. This is good but really all it lets us do is make a little plucking sound. Still, that\'92s something. Right? But real sounds don\'92t have such simple envelopes. Real sounds have more complex envelopes. So, we\'92ve got the following envelope generators so far:\
+\
+line~\
+curve~\
+function\
+adsr~\
+\
+So now for your assignment:\
+Create a sequencer using FM and AM synthesis techniques.}
