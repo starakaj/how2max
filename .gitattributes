@@ -2,3 +2,5 @@
 *.aif filter=lfs diff=lfs merge=lfs -text
 *.aiff filter=lfs diff=lfs merge=lfs -text
 *.ai filter=lfs diff=lfs merge=lfs -text
+ircampack/media/ filter=lfs diff=lfs merge=lfs -text
+midterm/movieclips/ filter=lfs diff=lfs merge=lfs -text
